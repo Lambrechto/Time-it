@@ -14,7 +14,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var view2: UIView!
     @IBOutlet weak var view3: UIView!
     @IBOutlet weak var view4: UIView!
-    let layerRadius: CGFloat = 6
+    let layerRadius: CGFloat = 4
 
     override func viewDidLoad() {
         super.viewDidLoad()
