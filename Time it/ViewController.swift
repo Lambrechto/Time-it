@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import GameKit
 
 class ViewController: UIViewController {
 
@@ -18,6 +19,12 @@ class ViewController: UIViewController {
     @IBOutlet weak var view4: UIView!
     let layerRadius: CGFloat = 4
     
+    // labels for events
+    @IBOutlet weak var firstLabel: UILabel!
+    @IBOutlet weak var secondLabel: UILabel!
+    @IBOutlet weak var thirdLabel: UILabel!
+    @IBOutlet weak var fourthLabel: UILabel!
+    
     
 
     override func viewDidLoad() {
@@ -27,7 +34,7 @@ class ViewController: UIViewController {
         view2.layer.cornerRadius = layerRadius
         view3.layer.cornerRadius = layerRadius
         view4.layer.cornerRadius = layerRadius
-        
+        newRound()
         
         // Do any additional setup after loading the view, typically from a nib.
         
@@ -40,6 +47,18 @@ class ViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
 
+
+    
+    func newRound() {
+        // Getting randomnumbers - used to display random events
+        var randomNumbers: [Int] = []
+        for _ in 1...4 {
+            randomNumbers.append(GKRandomSource.sharedRandom().nextInt(upperBound: allEvents.count))
+        }
+        print(randomNumbers)
+        
+        // Display events
+    }
 
 }
 

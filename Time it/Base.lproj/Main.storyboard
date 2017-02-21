@@ -233,6 +233,10 @@
                         </variation>
                     </view>
                     <connections>
+                        <outlet property="firstLabel" destination="NuR-AN-8Rd" id="cGz-TV-oPa"/>
+                        <outlet property="fourthLabel" destination="ZmO-5p-mXp" id="W8p-el-JBw"/>
+                        <outlet property="secondLabel" destination="5Sy-Ph-zBi" id="pLy-Y0-73K"/>
+                        <outlet property="thirdLabel" destination="WKf-PI-Ms6" id="mIN-Qa-Yfj"/>
                         <outlet property="view1" destination="bJd-4m-0Kp" id="lyH-vQ-Lia"/>
                         <outlet property="view2" destination="58N-S1-GJN" id="fJl-Bp-20U"/>
                         <outlet property="view3" destination="ekH-81-coK" id="2w2-JF-j0T"/>
