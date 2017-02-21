@@ -10,11 +10,15 @@ import UIKit
 
 class ViewController: UIViewController {
 
+    
+    // Views
     @IBOutlet weak var view1: UIView!
     @IBOutlet weak var view2: UIView!
     @IBOutlet weak var view3: UIView!
     @IBOutlet weak var view4: UIView!
     let layerRadius: CGFloat = 4
+    
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,6 +28,7 @@ class ViewController: UIViewController {
         view3.layer.cornerRadius = layerRadius
         view4.layer.cornerRadius = layerRadius
         
+        
         // Do any additional setup after loading the view, typically from a nib.
         
     }
@@ -31,6 +36,7 @@ class ViewController: UIViewController {
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
+        
         // Dispose of any resources that can be recreated.
     }
 
