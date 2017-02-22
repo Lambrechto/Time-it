@@ -25,6 +25,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var thirdLabel: UILabel!
     @IBOutlet weak var fourthLabel: UILabel!
     
+    var everyEvent = allEvents
     
 
     override func viewDidLoad() {
@@ -51,13 +52,21 @@ class ViewController: UIViewController {
     
     func newRound() {
         // Getting randomnumbers - used to display random events
+        everyEvent = allEvents
         var randomNumbers: [Int] = []
         for _ in 1...4 {
-            randomNumbers.append(GKRandomSource.sharedRandom().nextInt(upperBound: allEvents.count))
+            randomNumbers.append(GKRandomSource.sharedRandom().nextInt(upperBound: 5))
         }
-        print(randomNumbers)
         
-        // Display events
+        // Display events & remove in everyEvent at index to exclude events that has already been used
+        firstLabel.text = everyEvent[randomNumbers[0]].eventDescription
+        everyEvent.remove(at: randomNumbers[0])
+        secondLabel.text = everyEvent[randomNumbers[1]].eventDescription
+        everyEvent.remove(at: randomNumbers[1])
+        thirdLabel.text = everyEvent[randomNumbers[2]].eventDescription
+        everyEvent.remove(at: randomNumbers[2])
+        fourthLabel.text = everyEvent[randomNumbers[3]].eventDescription
+        everyEvent.remove(at: randomNumbers[3])
     }
 
 }
