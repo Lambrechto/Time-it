@@ -35,6 +35,9 @@
                                         <state key="normal" image="down_full"/>
                                         <state key="selected" image="down_full_selected"/>
                                         <state key="highlighted" image="down_full_selected"/>
+                                        <connections>
+                                            <action selector="firstDown:" destination="BYZ-38-t0r" eventType="touchUpInside" id="kBR-bF-O1E"/>
+                                        </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="First timed label " textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NuR-AN-8Rd">
                                         <rect key="frame" x="20" y="8" width="212" height="84"/>
@@ -66,6 +69,9 @@
                                         </constraints>
                                         <state key="normal" image="down_half"/>
                                         <state key="highlighted" image="down_half_selected"/>
+                                        <connections>
+                                            <action selector="secondDown:" destination="BYZ-38-t0r" eventType="touchUpInside" id="zYQ-BX-bb4"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RUU-Kf-Ub6">
                                         <rect key="frame" x="257" y="0.0" width="36" height="50"/>
@@ -75,6 +81,9 @@
                                         </constraints>
                                         <state key="normal" image="up_half"/>
                                         <state key="highlighted" image="up_half_selected"/>
+                                        <connections>
+                                            <action selector="secondUp:" destination="BYZ-38-t0r" eventType="touchUpInside" id="YBO-hV-5g6"/>
+                                        </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Second timed label " textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5Sy-Ph-zBi">
                                         <rect key="frame" x="20" y="8" width="212" height="84"/>
@@ -115,6 +124,9 @@
                                         </constraints>
                                         <state key="normal" image="up_half"/>
                                         <state key="highlighted" image="up_half_selected"/>
+                                        <connections>
+                                            <action selector="thirdUp:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Dhx-WD-xgJ"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OHB-Wb-rkf">
                                         <rect key="frame" x="257" y="50" width="36" height="50"/>
@@ -124,6 +136,9 @@
                                         </constraints>
                                         <state key="normal" image="down_half"/>
                                         <state key="highlighted" image="down_half_selected"/>
+                                        <connections>
+                                            <action selector="thirdDown:" destination="BYZ-38-t0r" eventType="touchUpInside" id="hZC-oc-6L4"/>
+                                        </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Third timed label " textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WKf-PI-Ms6">
                                         <rect key="frame" x="20" y="8" width="212" height="84"/>
@@ -158,6 +173,9 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="1"/>
                                         <state key="normal" image="up_full"/>
                                         <state key="highlighted" image="up_full_selected"/>
+                                        <connections>
+                                            <action selector="fourthUp:" destination="BYZ-38-t0r" eventType="touchUpInside" id="wQF-79-sWM"/>
+                                        </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Fourth timed label " textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZmO-5p-mXp">
                                         <rect key="frame" x="20" y="8" width="212" height="84"/>
