@@ -35,8 +35,6 @@ class ViewController: UIViewController {
     
     
     
-    
-    
     // Views
     @IBOutlet weak var view1: UIView!
     @IBOutlet weak var view2: UIView!
@@ -60,6 +58,9 @@ class ViewController: UIViewController {
     
     var eventPlacing = [allEvents[0], allEvents[1]]
     
+    // answer
+    var answer: Bool = false
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Rounded corners on views
@@ -82,13 +83,6 @@ class ViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
 
-    func moveDown(_ sender: String) {
-        if sender == "firstDown" {
-            swap(&eventPlacing[0], &eventPlacing[1])
-        } else if sender == "secondDown" {
-            swap(&eventPlacing[1], &eventPlacing[2])
-        }
-    }
     
     
     func move(_ sender: String) {
@@ -101,20 +95,31 @@ class ViewController: UIViewController {
         }
         
         
-        
         firstLabel.text = eventPlacing[0].eventDescription
         secondLabel.text = eventPlacing[1].eventDescription
         thirdLabel.text = eventPlacing[2].eventDescription
         fourthLabel.text = eventPlacing[3].eventDescription
+        CheckAnswer()
+        
     }
     
+    func CheckAnswer() {
+        
+        if eventPlacing[1].index > eventPlacing[0].index && eventPlacing[2].index > eventPlacing[1].index && eventPlacing[3].index > eventPlacing[2].index {
+            answer = true
+        } else {
+            answer = false
+        }
+        print(answer)
+    
+    }
     
     func newRound() {
         // Getting randomnumbers - used to display random events
         everyEvent = allEvents
         var randomNumbers: [Int] = []
+        var loopCount = 0
         for _ in 1...4 {
-            var loopCount = 0
             randomNumbers.append(GKRandomSource.sharedRandom().nextInt(upperBound: (everyEvent.count - loopCount)))
         
             loopCount += 1
