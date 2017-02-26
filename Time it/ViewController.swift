@@ -10,6 +10,7 @@ import UIKit
 import GameKit
 
 class ViewController: UIViewController {
+    
 
     // Buttons Up
     @IBAction func secondUp(_ sender: UIButton) {
@@ -58,11 +59,19 @@ class ViewController: UIViewController {
     
     var eventPlacing = [allEvents[0], allEvents[1]]
     
-    // answer
+    // Answer & Points
     var answer: Bool = false
+    var points = 0
+    
+    // Countdown
+    @IBOutlet weak var timerLabel: UILabel!
+    var countdownTimer: Timer!
+    var totalTime = 60
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.becomeFirstResponder()
         // Rounded corners on views
         view1.layer.cornerRadius = layerRadius
         view2.layer.cornerRadius = layerRadius
@@ -70,10 +79,40 @@ class ViewController: UIViewController {
         view4.layer.cornerRadius = layerRadius
         newRound()
         
-       
+        
+      
         
         // Do any additional setup after loading the view, typically from a nib.
         
+    }
+    
+    
+    
+    
+    // Countdown Timer
+    func startTimer() {
+        countdownTimer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(updateTime), userInfo: nil, repeats: true)
+    }
+
+    func updateTime() {
+        timerLabel.text = "\(timeFormatted(totalTime))"
+        
+        if totalTime != 0 {
+            totalTime -= 1
+        } else {
+            CheckAnswer()
+        }
+    }
+
+    func endTimer() {
+        countdownTimer.invalidate()
+    }
+    
+    func timeFormatted(_ totalSeconds: Int) -> String {
+        let seconds: Int = totalSeconds % 60
+        let minutes: Int = (totalSeconds / 60) % 60
+        //     let hours: Int = totalSeconds / 3600
+        return String(format: "%02d:%02d", minutes, seconds)
     }
     
 
@@ -82,7 +121,6 @@ class ViewController: UIViewController {
         
         // Dispose of any resources that can be recreated.
     }
-
     
     
     func move(_ sender: String) {
@@ -99,7 +137,7 @@ class ViewController: UIViewController {
         secondLabel.text = eventPlacing[1].eventDescription
         thirdLabel.text = eventPlacing[2].eventDescription
         fourthLabel.text = eventPlacing[3].eventDescription
-        CheckAnswer()
+        
         
     }
     
@@ -107,9 +145,11 @@ class ViewController: UIViewController {
         
         if eventPlacing[1].index > eventPlacing[0].index && eventPlacing[2].index > eventPlacing[1].index && eventPlacing[3].index > eventPlacing[2].index {
             answer = true
+            points += 1
         } else {
             answer = false
         }
+        
         print(answer)
     
     }
@@ -125,7 +165,7 @@ class ViewController: UIViewController {
             loopCount += 1
         }
         
-       
+        
         
         
         // Display events & remove in everyEvent at index to exclude events that has already been used
@@ -143,8 +183,14 @@ class ViewController: UIViewController {
         everyEvent.remove(at: randomNumbers[3])
         
         eventPlacing = [firstEvent, secondEvent, thirdEvent, fourthEvent]
+        
+        startTimer()
     }
 
+    // Shake detector - checkAnswer()
+    override func motionBegan(_ motion: UIEventSubtype, with event: UIEvent?) {
+        CheckAnswer()
+    }
     
 }
 
