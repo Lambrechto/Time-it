@@ -91,6 +91,10 @@ class ViewController: UIViewController {
     
     
     
+    // Wrong answer label
+    @IBOutlet weak var wrongAnswerLabel: UILabel!
+    
+    
     
     
     override func viewDidLoad() {
@@ -179,8 +183,9 @@ class ViewController: UIViewController {
         thirdLabel.text = eventPlacing[2].eventDescription
         fourthLabel.text = eventPlacing[3].eventDescription
         
-        
+    wrongAnswerLabel.isHidden = true
     }
+    
     // Check answer & Buttons
     @IBAction func nextRoundRed(_ sender: Any) {
         newRound()
@@ -222,6 +227,10 @@ class ViewController: UIViewController {
                 thirdDown.isHidden = true
                 fourthUp.isHidden = true
             }
+            
+            if sender == "Motion" || answer == false {
+                wrongAnswerLabel.isHidden = false
+            }
         }
         
         print(answer)
@@ -231,6 +240,7 @@ class ViewController: UIViewController {
     }
     
     func newRound() {
+        wrongAnswerLabel.isHidden = true
         if numberOfRounds < 6 {
         numberOfRounds += 1
         timerLabel.text = "\(timeFormatted(startTime))"
