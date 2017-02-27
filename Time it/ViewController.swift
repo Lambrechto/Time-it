@@ -11,6 +11,17 @@ import GameKit
 
 class ViewController: UIViewController {
     
+    // Move buttons
+    @IBOutlet weak var firstDown: UIButton!
+    @IBOutlet weak var secondUp: UIButton!
+    @IBOutlet weak var secondDown: UIButton!
+    @IBOutlet weak var thirdUp: UIButton!
+    @IBOutlet weak var thirdDown: UIButton!
+    @IBOutlet weak var fourthUp: UIButton!
+    
+   
+    
+    
 
     // Buttons Up
     @IBAction func secondUp(_ sender: UIButton) {
@@ -62,21 +73,40 @@ class ViewController: UIViewController {
     // Answer & Points
     var answer: Bool = false
     var points = 0
+    var numberOfRounds = 0
     
     // Countdown
     @IBOutlet weak var timerLabel: UILabel!
     var countdownTimer: Timer!
     var totalTime = 60
+    let startTime = 60
+    
+    
+    // Buttons for next round
+    @IBOutlet weak var nextRoundGreen: UIButton!
+    @IBOutlet weak var nextRoundRed: UIButton!
+    
+    // Text under button/time
+    @IBOutlet weak var textUnderButton: UILabel!
+    
+    
+    
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        nextRoundGreen.isHidden = true
+        nextRoundRed.isHidden = true
         self.becomeFirstResponder()
         // Rounded corners on views
         view1.layer.cornerRadius = layerRadius
         view2.layer.cornerRadius = layerRadius
         view3.layer.cornerRadius = layerRadius
         view4.layer.cornerRadius = layerRadius
+        
+        // new round - zeroize numbers
+        score = 0
+        numberOfRounds = 0
         newRound()
         
         
@@ -91,6 +121,7 @@ class ViewController: UIViewController {
     
     // Countdown Timer
     func startTimer() {
+        totalTime = startTime
         countdownTimer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(updateTime), userInfo: nil, repeats: true)
     }
 
@@ -100,7 +131,17 @@ class ViewController: UIViewController {
         if totalTime != 0 {
             totalTime -= 1
         } else {
-            CheckAnswer()
+            endTimer()
+            CheckAnswer("Timer")
+            // move buttons should be inactive
+        firstDown.isHidden = true
+        secondUp.isHidden = true
+        secondDown.isHidden = true
+        thirdUp.isHidden = true
+        thirdDown.isHidden = true
+        fourthUp.isHidden = true
+            
+        
         }
     }
 
@@ -140,21 +181,74 @@ class ViewController: UIViewController {
         
         
     }
+    // Check answer & Buttons
+    @IBAction func nextRoundRed(_ sender: Any) {
+        newRound()
+    }
+    @IBAction func nextRoundGreen(_ sender: Any) {
+        newRound()
+    }
     
-    func CheckAnswer() {
+    
+    
+    func CheckAnswer(_ sender: String) {
         
         if eventPlacing[1].index > eventPlacing[0].index && eventPlacing[2].index > eventPlacing[1].index && eventPlacing[3].index > eventPlacing[2].index {
+            // Hide buttons
+            firstDown.isHidden = true
+            secondUp.isHidden = true
+            secondDown.isHidden = true
+            thirdUp.isHidden = true
+            thirdDown.isHidden = true
+            fourthUp.isHidden = true
+            
             answer = true
-            points += 1
+            score += 1
+            endTimer()
+            nextRoundGreen.isHidden = false
+            timerLabel.isHidden = true
+            
         } else {
             answer = false
+            if sender == "Timer" {
+            timerLabel.isHidden = true
+                nextRoundRed.isHidden = false
+                
+                //Hide buttons
+                firstDown.isHidden = true
+                secondUp.isHidden = true
+                secondDown.isHidden = true
+                thirdUp.isHidden = true
+                thirdDown.isHidden = true
+                fourthUp.isHidden = true
+            }
         }
         
         print(answer)
+        
+        
     
     }
     
     func newRound() {
+        if numberOfRounds < 6 {
+        numberOfRounds += 1
+        timerLabel.text = "\(timeFormatted(startTime))"
+        
+        // Show buttons
+        firstDown.isHidden = false
+        secondUp.isHidden = false
+        secondDown.isHidden = false
+        thirdUp.isHidden = false
+        thirdDown.isHidden = false
+        fourthUp.isHidden = false
+        
+        startTimer()
+        nextRoundGreen.isHidden = true
+        nextRoundRed.isHidden = true
+        timerLabel.isHidden = false
+        
+    
         // Getting randomnumbers - used to display random events
         everyEvent = allEvents
         var randomNumbers: [Int] = []
@@ -183,14 +277,24 @@ class ViewController: UIViewController {
         everyEvent.remove(at: randomNumbers[3])
         
         eventPlacing = [firstEvent, secondEvent, thirdEvent, fourthEvent]
+        } else {
+            // Skub info til secondVC
+            
+            displayScore()
+        }
         
-        startTimer()
     }
 
     // Shake detector - checkAnswer()
     override func motionBegan(_ motion: UIEventSubtype, with event: UIEvent?) {
-        CheckAnswer()
+        CheckAnswer("Motion")
     }
+    
+    func displayScore() {
+        
+        self.performSegue(withIdentifier: "secondVC", sender: self)
+    }
+    
     
 }
 

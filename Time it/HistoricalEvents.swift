@@ -40,3 +40,10 @@ let tinder = events(eventDescription: "Tinder", index: 23)
 let vine = events(eventDescription: "Vine", index: 24)
 
 var allEvents = [yahoo, google, napster, wikipedia, Friendster, linkedin, myspace, flickr, facebook, yelp, youtube, reddit, twitter, wikileaks, tumblr, soundcloud, ninegag, whatsapp, foursquare, pinterest, instagram, snapchat, tinder, vine]
+
+
+
+
+// Round Points
+var score = 0
+

@@ -13,6 +13,7 @@
 		2708842F1E5CA42C00150B91 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2708842E1E5CA42C00150B91 /* Assets.xcassets */; };
 		270884321E5CA42C00150B91 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 270884301E5CA42C00150B91 /* LaunchScreen.storyboard */; };
 		2708843A1E5CD4B500150B91 /* HistoricalEvents.swift in Sources */ = {isa = PBXBuildFile; fileRef = 270884391E5CD4B500150B91 /* HistoricalEvents.swift */; };
+		270884401E63798900150B91 /* SecondVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2708843F1E63798900150B91 /* SecondVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		270884311E5CA42C00150B91 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		270884331E5CA42C00150B91 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		270884391E5CD4B500150B91 /* HistoricalEvents.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoricalEvents.swift; sourceTree = "<group>"; };
+		2708843F1E63798900150B91 /* SecondVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SecondVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +60,7 @@
 			children = (
 				270884271E5CA42C00150B91 /* AppDelegate.swift */,
 				270884291E5CA42C00150B91 /* ViewController.swift */,
+				2708843F1E63798900150B91 /* SecondVC.swift */,
 				270884391E5CD4B500150B91 /* HistoricalEvents.swift */,
 				2708842B1E5CA42C00150B91 /* Main.storyboard */,
 				2708842E1E5CA42C00150B91 /* Assets.xcassets */,
@@ -142,6 +145,7 @@
 			files = (
 				2708843A1E5CD4B500150B91 /* HistoricalEvents.swift in Sources */,
 				2708842A1E5CA42C00150B91 /* ViewController.swift in Sources */,
+				270884401E63798900150B91 /* SecondVC.swift in Sources */,
 				270884281E5CA42C00150B91 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
